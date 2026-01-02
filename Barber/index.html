@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Millenium | Barber Club</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #e8d7b4;
+            --gold-dark: #B8941E;
+            --champagne: #F7E7CE;
+            --black: #1a1a1a;
+            --white: #ffffff;
+            --gray-bg: #e8e8e8;
+            --gray-light: #d4d4d4;
+            --gray-card: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--gray-bg);
+            color: var(--black);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .nav-link {
+            position: relative;
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        .nav-link:hover {
+            color: var(--gold-primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold-primary), var(--gold-light));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .service-card {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: var(--white);
+        }
+
+        .service-card:hover {
+            border-color: var(--gold-primary);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-black {
+            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold-primary) 100%);
+            color: var(--white);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-black:hover {
+            background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-light) 100%);
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-black:active {
+            transform: scale(0.98);
+        }
+
+        .logo-container {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .logo-container img {
+            filter: brightness(1.1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-load {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        section {
+            scroll-margin-top: 100px;
+        }
+
+        .gold-accent {
+            color: var(--gold-primary);
+        }
+
+        .gold-bg {
+            background: linear-gradient(135deg, var(--white) 0%, var(--gray-light) 100%);
+        }
+
+        .gold-border {
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .icon-gold {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
+            color: white;
+        }
+
+        .icon-gold:hover {
+            background: linear-gradient(135deg, var(--gold-light), var(--champagne));
+            color: var(--gold-dark);
+        }
+
+        .gold-badge {
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--champagne) 50%, var(--gold-light) 100%);
+            color: var(--gold-dark);
+        }
+
+        .product-btn {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold-primary));
+            color: white;
+        }
+
+        .product-btn:hover {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-image {
+            transform: scale(1.1);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 3rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.15) rotate(2deg);
+        }
+
+        .gallery-item:nth-child(1) {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .gallery-item:nth-child(2) {
+            animation: float 6s ease-in-out infinite 1.5s;
+        }
+
+        .gallery-item:nth-child(3) {
+            animation: float 6s ease-in-out infinite 3s;
+        }
+
+        .gallery-item:nth-child(4) {
+            animation: float 6s ease-in-out infinite 4.5s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .text-primary {
+            color: var(--black);
+        }
+
+        .text-muted {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        .border-subtle {
+            border-color: rgba(212, 175, 55, 0.15);
+        }
+
+        .card-bg {
+            background: var(--white);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-gold-primary selection:text-white text-primary">
+
+    <!-- NAVIGATION -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-8">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;" class="flex items-center gap-3 group">
+                <div class="logo-container w-10 h-10 rounded-xl flex items-center justify-center transition-transform group-hover:rotate-6 overflow-hidden">
+                    <img src="https://via.placeholder.com/40x40/D4AF37/FFFFFF?text=LOGO" alt="Millenium Logo" class="w-full h-full object-cover">
+                </div>
+                <span class="text-xl font-black tracking-tighter gold-accent">MILLENIUM</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-10">
+                <a href="#servicios" class="nav-link text-[10px] font-bold uppercase tracking-[0.2em] text-black/40 hover:text-black transition-colors">Servicios</a>
+                <a href="#nosotros" class="nav-link text-[10px] font-bold uppercase tracking-[0.2em] text-black/40 hover:text-black transition-colors">Nosotros</a>
+                <a href="#productos" class="nav-link text-[10px] font-bold uppercase tracking-[0.2em] text-black/40 hover:text-black transition-colors">Productos</a>
+                <a href="#resenas" class="nav-link text-[10px] font-bold uppercase tracking-[0.2em] text-black/40 hover:text-black transition-colors">Reseñas</a>
+                <button onclick="scrollToId('reservar')" class="btn-black px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.2em]">Agendar Cita</button>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden text-black p-2">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 bg-white border-b border-black/5 p-8 flex flex-col gap-8 md:hidden shadow-2xl">
+            <a href="#servicios" class="text-3xl font-black text-black">Servicios</a>
+            <a href="#nosotros" class="text-3xl font-black text-black">Nosotros</a>
+            <a href="#productos" class="text-3xl font-black text-black">Productos</a>
+            <a href="#resenas" class="text-3xl font-black text-black">Reseñas</a>
+            <button onclick="scrollToId('reservar')" class="btn-black p-6 rounded-2xl font-black text-center text-sm uppercase tracking-widest">AGENDAR AHORA</button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="relative pt-48 pb-32 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-20">
+            <div class="flex-1 space-y-10 text-center lg:text-left animate-on-load">
+                <span class="gold-badge inline-block px-4 py-1.5 rounded-full text-[9px] font-black tracking-[0.4em] uppercase">Barber Club</span>
+                <h1 class="text-7xl md:text-[9.5rem] font-black tracking-tighter leading-[0.8] text-black">
+                    Barber <br><span class="gold-accent opacity-60">Shop</span>
+                </h1>
+                <p class="text-lg md:text-2xl text-muted max-w-md leading-relaxed mx-auto lg:mx-0 font-medium">
+                    Marca tu propio estilo.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start">
+                    <button onclick="scrollToId('reservar')" class="btn-black w-full sm:w-auto px-12 py-6 rounded-full flex items-center justify-center gap-4 text-xs font-bold uppercase tracking-[0.2em]">
+                        RESERVAR CITA <i data-lucide="calendar" class="w-4 h-4"></i>
+                    </button>
+                    <button onclick="scrollToId('servicios')" class="w-full sm:w-auto px-12 py-6 rounded-full flex items-center justify-center gap-4 border border-black/10 text-xs font-bold uppercase tracking-[0.2em] hover:bg-gray-50 transition-all">
+                        EXPLORAR SERVICIOS <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="flex-1 w-full max-w-2xl animate-on-load" style="animation-delay: 0.2s">
+                <div class="rounded-[3.5rem] overflow-hidden border border-black/5 shadow-2xl grayscale transition-all duration-1000 hover:grayscale-0">
+                    <img src="https://photos.fife.usercontent.google.com/pw/AP1GczPEd8ahM49RJcrXpFL9GH0lIH37rmj27VoIVmNnivBdSPvmFkEFJ" alt="Barber" class="w-full h-[600px] object-cover">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="nosotros" class="py-32 px-6 border-t border-subtle">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-32 items-center">
+            <div class="flex-1 space-y-10">
+                <div class="space-y-4">
+                    <span class="gold-accent font-bold tracking-[0.5em] text-[9px] uppercase">Filosofía</span>
+                    <h2 class="text-5xl md:text-7xl font-black tracking-tighter leading-none text-black">Menos Ruido, <br>Más Estilo.</h2>
+                </div>
+                <p class="text-2xl text-muted leading-relaxed font-medium">
+                    Creemos en la elegancia de lo simple. Cada corte es una obra de ingeniería diseñada para potenciar tu identidad.
+                </p>
+                <div class="grid grid-cols-2 gap-12 pt-6">
+                    <div>
+                        <h4 class="font-black text-black text-[10px] uppercase tracking-widest mb-2">Técnica</h4>
+                        <p class="text-muted text-xs font-medium">Maestría en cada trazo.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-black text-black text-[10px] uppercase tracking-widest mb-2">Entorno</h4>
+                        <p class="text-muted text-xs font-medium">Minimalismo funcional.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1 gallery-grid">
+                <div class="gallery-item" style="height: 280px;">
+                    <img src="https://images.unsplash.com/photo-1599351431247-f10b21ce53e2?q=80&w=1974&auto=format&fit=crop" alt="Barbería detalle 1">
+                </div>
+                <div class="gallery-item" style="height: 280px;">
+                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=2070&auto=format&fit=crop" alt="Barbería detalle 2">
+                </div>
+                <div class="gallery-item" style="height: 280px;">
+                    <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=2070&auto=format&fit=crop" alt="Barbería detalle 3">
+                </div>
+                <div class="gallery-item" style="height: 280px;">
+                    <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2070&auto=format&fit=crop" alt="Barbería detalle 4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="servicios" class="py-32 px-6 gold-bg border-y gold-border">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24 space-y-4">
+                <span class="gold-accent font-bold tracking-[0.5em] text-[9px] uppercase">Nuestra Maestría</span>
+                <h2 class="text-5xl md:text-7xl font-black tracking-tighter text-black">Servicios Selectos</h2>
+            </div>
+            <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="productos" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 space-y-4">
+                <span class="gold-accent font-bold tracking-[0.5em] text-[9px] uppercase">Productos</span>
+                <h2 class="text-5xl md:text-7xl font-black tracking-tighter text-black">Nuestra Tienda</h2>
+                <p class="text-xl text-muted max-w-2xl mx-auto font-medium">Productos premium seleccionados para mantener tu estilo impecable</p>
+            </div>
+            <div id="products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="resenas" class="py-32 px-6 gold-bg border-y gold-border">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24 space-y-4">
+                <span class="gold-accent font-bold tracking-[0.5em] text-[9px] uppercase">Comunidad</span>
+                <h2 class="text-5xl md:text-7xl font-black tracking-tighter text-black">Testimonios</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card-bg p-12 rounded-[3.5rem] border gold-border shadow-sm space-y-8">
+                    <div class="flex gap-1">
+                        <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
+                    </div>
+                    <p class="text-2xl font-black tracking-tight leading-snug text-black">"Un nivel de detalle que no he encontrado en ningún otro lugar."</p>
+                    <div class="flex items-center gap-4 pt-4">
+                        <div class="icon-gold w-12 h-12 rounded-xl flex items-center justify-center font-black">C</div>
+                        <div>
+                            <h4 class="font-black text-sm uppercase text-black">Carlos M.</h4>
+                            <p class="text-[8px] text-muted font-bold tracking-widest uppercase">Cliente Fiel</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-bg p-12 rounded-[3.5rem] border gold-border shadow-sm space-y-8">
+                    <div class="flex gap-1">
+                        <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
+                    </div>
+                    <p class="text-2xl font-black tracking-tight leading-snug text-black">"El ambiente minimalista te permite desconectar de verdad. 10/10."</p>
+                    <div class="flex items-center gap-4 pt-4">
+                        <div class="icon-gold w-12 h-12 rounded-xl flex items-center justify-center font-black">A</div>
+                        <div>
+                            <h4 class="font-black text-sm uppercase text-black">Andrés S.</h4>
+                            <p class="text-[8px] text-muted font-bold tracking-widest uppercase">Grooming Enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-bg p-12 rounded-[3.5rem] border gold-border shadow-sm space-y-8">
+                    <div class="flex gap-1">
+                        <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
+                    </div>
+                    <p class="text-2xl font-black tracking-tight leading-snug text-black">"Técnica premium y puntualidad suiza. El lugar perfecto."</p>
+                    <div class="flex items-center gap-4 pt-4">
+                        <div class="icon-gold w-12 h-12 rounded-xl flex items-center justify-center font-black">J</div>
+                        <div>
+                            <h4 class="font-black text-sm uppercase text-black">Jorge R.</h4>
+                            <p class="text-[8px] text-muted font-bold tracking-widest uppercase">Business Executive</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / BOOKING -->
+    <section id="reservar" class="py-48 px-6 text-center">
+        <div class="max-w-4xl mx-auto space-y-16">
+            <div class="space-y-6">
+                <span class="gold-accent font-bold tracking-[0.5em] text-[9px] uppercase">Reserva</span>
+                <h2 class="text-6xl md:text-8xl font-black tracking-tighter text-black">Tu momento es hoy.</h2>
+                <p class="text-2xl text-muted max-w-xl mx-auto font-medium leading-relaxed">Agenda tu cita en segundos y recibe confirmación inmediata.</p>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a href="https://wa.me/yournumber" target="_blank" class="btn-black w-full sm:w-auto px-16 py-8 rounded-full flex items-center justify-center gap-5 text-sm font-black uppercase tracking-[0.1em]">
+                    WHATSAPP DIRECT <i data-lucide="message-circle" class="w-6 h-6"></i>
+                </a>
+                <button onclick="alert('Sistema de calendario disponible pronto.')" class="w-full sm:w-auto px-16 py-8 rounded-full flex items-center justify-center gap-5 border gold-border text-sm font-black uppercase tracking-[0.1em] hover:bg-gray-light transition-all text-black">
+                    ONLINE CALENDAR <i data-lucide="globe" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div class="flex items-center justify-center gap-3 gold-accent font-black text-[10px] uppercase tracking-[0.4em] animate-pulse pt-10">
+                <div class="w-2 h-2 rounded-full bg-current"></div>
+                Availability: High for today
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="pt-32 pb-16 px-6 border-t border-subtle">
+        <div class="max-w-7xl mx-auto space-y-24">
+            <div class="flex flex-col lg:flex-row justify-between gap-20">
+                <div class="space-y-10">
+                    <div class="text-5xl font-black tracking-tighter gold-accent">ELYSIAN.</div>
+                    <div class="flex gap-4">
+                        <a href="#" class="icon-gold w-12 h-12 border gold-border rounded-2xl flex items-center justify-center transition-all">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="icon-gold w-12 h-12 border gold-border rounded-2xl flex items-center justify-center transition-all">
+                            <i data-lucide="video" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="icon-gold w-12 h-12 border gold-border rounded-2xl flex items-center justify-center transition-all">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-16">
+                    <div class="space-y-4">
+                        <h4 class="font-black text-sm uppercase tracking-widest text-black">Studio</h4>
+                        <p class="text-muted text-xs font-medium leading-loose">Calle Minimalista 01<br>Distrito Central, Ciudad<br>CP 12345</p>
+                    </div>
+                    <div class="space-y-4">
+                        <h4 class="font-black text-sm uppercase tracking-widest text-black">Opening</h4>
+                        <p class="text-muted text-xs font-medium leading-loose">Lun - Sáb: 09:00 - 21:00<br>Dom: 10:00 - 18:00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-10 pt-16 border-t border-subtle">
+                <p class="text-[9px] text-muted font-black uppercase tracking-[0.3em]">&copy; 2024 Elysian Studio. Beyond Grooming.</p>
+                <div class="flex gap-8 text-[9px] font-black uppercase tracking-widest text-muted">
+                    <a href="#" class="hover:text-gold-primary transition-colors">Privacidad</a>
+                    <a href="#" class="hover:text-gold-primary transition-colors">Términos</a>
+                    <a href="#" class="hover:text-gold-primary transition-colors">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MOBILE CTA -->
+    <div class="md:hidden fixed bottom-10 left-6 right-6 z-40">
+        <button onclick="scrollToId('reservar')" class="btn-black w-full py-5 rounded-2xl shadow-2xl text-[10px] font-black uppercase tracking-[0.2em] active:scale-95 transition-transform">
+            Agendar Mi Turno
+        </button>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Data - SERVICIOS ACTUALIZADOS
+        const services = [
+            { id: '1', name: 'Corte Sencillo', desc: 'Corte clásico de precisión.', price: 18, time: '25 MIN', image: 'hhttps://www.citylit.ac.uk/media/amasty/blog/How_to_learn_French_9_tips_from_a_French_tutor.jpg' },
+            { id: '2', name: 'Corte y Cejas', desc: 'Corte + diseño de cejas.', price: 20, time: '30 MIN', image: 'https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=500&h=400&fit=crop' },
+            { id: '3', name: 'Corte y Línea', desc: 'Corte + perfilado de línea.', price: 20, time: '30 MIN', image: 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=500&h=400&fit=crop' },
+            { id: '4', name: 'Corte y Barba', desc: 'Combo completo de estilo.', price: 25, time: '45 MIN', image: 'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=500&h=400&fit=crop' },
+            { id: '5', name: 'Barba', desc: 'Perfilado y arreglo de barba.', price: 15, time: '20 MIN', image: 'https://images.unsplash.com/photo-1621607512214-68297480165e?w=500&h=400&fit=crop' },
+            { id: '6', name: 'Corte Millenium', desc: 'Nuestro servicio premium.', price: 30, time: '50 MIN', image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=500&h=400&fit=crop' }
+        ];
+
+        // Data - PRODUCTOS
+        const products = [
+            { id: '1', name: 'Cera Modeladora', price: 15, image: 'https://images.unsplash.com/photo-1621607512214-68297480165e?w=400&h=400&fit=crop' },
+            { id: '2', name: 'Pomada Fijación', price: 18, image: 'https://images.unsplash.com/photo-1623860661910-e8b28e3246e5?w=400&h=400&fit=crop' },
+            { id: '3', name: 'Aceite para Barba', price: 12, image: 'https://images.unsplash.com/photo-1631729371254-42c2559e6e79?w=400&h=400&fit=crop' },
+            { id: '4', name: 'Shampoo Premium', price: 20, image: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=400&h=400&fit=crop' },
+            { id: '5', name: 'Gel Fijador', price: 14, image: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&h=400&fit=crop' },
+            { id: '6', name: 'Bálsamo Barba', price: 16, image: 'https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=400&h=400&fit=crop' },
+            { id: '7', name: 'Cepillo de Barba', price: 10, image: 'https://images.unsplash.com/photo-1603569283847-aa295f0d016a?w=400&h=400&fit=crop' },
+            { id: '8', name: 'Spray Textura', price: 17, image: 'https://images.unsplash.com/photo-1585838533984-9e4d9f43b2e9?w=400&h=400&fit=crop' },
+            { id: '9', name: 'Aftershave Lotion', price: 19, image: 'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400&h=400&fit=crop' },
+            { id: '10', name: 'Kit Grooming', price: 45, image: 'https://images.unsplash.com/photo-1595348020949-87cdfbb44174?w=400&h=400&fit=crop' }
+        ];
+
+        // Render Services
+        function renderServices() {
+            const grid = document.getElementById('services-grid');
+            services.forEach(s => {
+                grid.innerHTML += `
+                    <div class="service-card bg-white rounded-[3rem] p-12 flex flex-col group">
+                        <div class="flex justify-between items-start mb-12">
+                            <div class="icon-gold w-12 h-12 rounded-2xl flex items-center justify-center transition-colors">
+                                <i data-lucide="${s.icon}" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-3xl font-black gold-accent">${s.price}</span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4 uppercase tracking-tighter">${s.name}</h3>
+                        <p class="text-black/40 text-sm leading-relaxed mb-10 flex-grow font-medium">${s.desc}</p>
+                        <button onclick="scrollToId('reservar')" class="w-full py-5 border gold-border rounded-2xl text-[9px] font-black uppercase tracking-[0.3em] hover:bg-gradient-to-r hover:from-gold-dark hover:to-gold-primary hover:text-white transition-all">Seleccionar</button>
+                    </div>
+                `;
+            });
+            lucide.createIcons();
+        }
+
+        // Render Products
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            products.forEach(p => {
+                grid.innerHTML += `
+                    <div class="service-card bg-white rounded-[2.5rem] overflow-hidden group">
+                        <div class="aspect-square overflow-hidden">
+                            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="text-base font-black uppercase tracking-tighter">${p.name}</h3>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-black text-black">${p.price}</span>
+                                <a href="https://wa.me/yournumber?text=Hola!%20Quiero%20comprar%20${encodeURIComponent(p.name)}%20-%20${p.price}" target="_blank" class="bg-black text-white px-5 py-2 rounded-full font-black text-[8px] uppercase tracking-[0.2em] hover:bg-emerald-600 transition-all inline-block">
+                                    Comprar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // Smooth Scroll
+        function scrollToId(id) {
+            document.getElementById('mobile-menu').classList.add('hidden');
+            const target = document.getElementById(id);
+            if (target) {
+                const offset = 100;
+                const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({ top: pos, behavior: 'smooth' });
+            }
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 30) {
+                nav.classList.add('glass-nav');
+                nav.classList.remove('py-8');
+                nav.classList.add('py-4');
+            } else {
+                nav.classList.remove('glass-nav');
+                nav.classList.add('py-8');
+                nav.classList.remove('py-4');
+            }
+        });
+
+        // Mobile Menu
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth Scroll for Hash Links
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    scrollToId(href.substring(1));
+                }
+            });
+        });
+
+        // Initialize
+        renderServices();
+        renderProducts();
+    </script>
+</body>
+
+</html>
