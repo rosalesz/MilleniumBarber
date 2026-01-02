@@ -20,7 +20,6 @@
             --white: #ffffff;
             --gray-bg: #e8e8e8;
             --gray-light: #d4d4d4;
-            --gray-card: #ffffff;
         }
 
         body {
@@ -144,26 +143,6 @@
             color: var(--gold-dark);
         }
 
-        .product-btn {
-            background: linear-gradient(135deg, var(--gold-dark), var(--gold-primary));
-            color: white;
-        }
-
-        .product-btn:hover {
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
-        }
-
-        .service-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .service-card:hover .service-image {
-            transform: scale(1.1);
-        }
-
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -219,10 +198,6 @@
             }
         }
 
-        .text-primary {
-            color: var(--black);
-        }
-
         .text-muted {
             color: rgba(0, 0, 0, 0.5);
         }
@@ -230,32 +205,28 @@
         .border-subtle {
             border-color: rgba(212, 175, 55, 0.15);
         }
-
-        .card-bg {
-            background: var(--white);
-        }
     </style>
 </head>
 
-<body class="antialiased selection:bg-gold-primary selection:text-white text-primary">
+<body class="antialiased selection:bg-gold-primary selection:text-white">
 
     <!-- NAVIGATION -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-8">
         <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
             <a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;" class="flex items-center gap-3 group">
                 <div class="logo-container w-10 h-10 rounded-xl flex items-center justify-center transition-transform group-hover:rotate-6 overflow-hidden">
-                    <img src="https://via.placeholder.com/40x40/D4AF37/FFFFFF?text=LOGO" alt="Millenium Logo" class="w-full h-full object-cover">
+                    <img src="https://github.com/rosalesz/MilleniumBarber/blob/main/Imagenes/logo.png?raw=true" alt="Millenium Logo" class="w-full h-full object-cover">
                 </div>
                 <span class="text-xl font-black tracking-tighter gold-accent">MILLENIUM</span>
             </a>
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center gap-10">
-                <a href="#servicios" class="nav-link text-[10px] font-bold uppercase tracking-[0.2em] text-black/40 hover:text-black transition-colors">Servicios</a>
-                <a href="#nosotros" class="nav-link text-[10px] font-bold uppercase tracking-[0.2em] text-black/40 hover:text-black transition-colors">Nosotros</a>
-                <a href="#productos" class="nav-link text-[10px] font-bold uppercase tracking-[0.2em] text-black/40 hover:text-black transition-colors">Productos</a>
-                <a href="#resenas" class="nav-link text-[10px] font-bold uppercase tracking-[0.2em] text-black/40 hover:text-black transition-colors">Reseñas</a>
-                <button onclick="scrollToId('reservar')" class="btn-black px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.2em]">Agendar Cita</button>
+                <a href="#servicios" class="nav-link text-[10px] font-bold uppercase tracking-[0.2em]">Servicios</a>
+                <a href="#nosotros" class="nav-link text-[10px] font-bold uppercase tracking-[0.2em]">Nosotros</a>
+                <a href="#productos" class="nav-link text-[10px] font-bold uppercase tracking-[0.2em]">Productos</a>
+                <a href="#resenas" class="nav-link text-[10px] font-bold uppercase tracking-[0.2em]">Reseñas</a>
+                <button onclick="scrollToId('reservar')" class="btn-black px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.2em]">Agendar Cupo</button>
             </div>
 
             <!-- Mobile Toggle -->
@@ -296,7 +267,7 @@
             </div>
             <div class="flex-1 w-full max-w-2xl animate-on-load" style="animation-delay: 0.2s">
                 <div class="rounded-[3.5rem] overflow-hidden border border-black/5 shadow-2xl grayscale transition-all duration-1000 hover:grayscale-0">
-                    <img src="https://photos.fife.usercontent.google.com/pw/AP1GczPEd8ahM49RJcrXpFL9GH0lIH37rmj27VoIVmNnivBdSPvmFkEFJ" alt="Barber" class="w-full h-[600px] object-cover">
+                    <img src="https://github.com/rosalesz/MilleniumBarber/blob/main/Imagenes/1.png?raw=true" alt="Barber" class="w-full h-[600px] object-cover">
                 </div>
             </div>
         </div>
@@ -311,7 +282,7 @@
                     <h2 class="text-5xl md:text-7xl font-black tracking-tighter leading-none text-black">Menos Ruido, <br>Más Estilo.</h2>
                 </div>
                 <p class="text-2xl text-muted leading-relaxed font-medium">
-                    Creemos en la elegancia de lo simple. Cada corte es una obra de ingeniería diseñada para potenciar tu identidad.
+                    Creemos en la elegancia de lo simple. Cada corte es una obra de ingeniería diseñada para potenciar tu estilo.
                 </p>
                 <div class="grid grid-cols-2 gap-12 pt-6">
                     <div>
@@ -320,22 +291,22 @@
                     </div>
                     <div>
                         <h4 class="font-black text-black text-[10px] uppercase tracking-widest mb-2">Entorno</h4>
-                        <p class="text-muted text-xs font-medium">Minimalismo funcional.</p>
+                        <p class="text-muted text-xs font-medium">Relajacion maxima.</p>
                     </div>
                 </div>
             </div>
             <div class="flex-1 gallery-grid">
                 <div class="gallery-item" style="height: 280px;">
-                    <img src="https://images.unsplash.com/photo-1599351431247-f10b21ce53e2?q=80&w=1974&auto=format&fit=crop" alt="Barbería detalle 1">
+                    <img src="https://github.com/rosalesz/MilleniumBarber/blob/main/Imagenes/bi2.png?raw=true" alt="Barbería detalle 1">
                 </div>
                 <div class="gallery-item" style="height: 280px;">
-                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=2070&auto=format&fit=crop" alt="Barbería detalle 2">
+                    <img src="https://github.com/rosalesz/MilleniumBarber/blob/main/Imagenes/bi1.png?raw=true" alt="Barbería detalle 2">
                 </div>
                 <div class="gallery-item" style="height: 280px;">
-                    <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=2070&auto=format&fit=crop" alt="Barbería detalle 3">
+                    <img src="https://github.com/rosalesz/MilleniumBarber/blob/main/Imagenes/bi3.png?raw=true" alt="Barbería detalle 3">
                 </div>
                 <div class="gallery-item" style="height: 280px;">
-                    <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2070&auto=format&fit=crop" alt="Barbería detalle 4">
+                    <img src="https://github.com/rosalesz/MilleniumBarber/blob/main/Imagenes/bi4.png?raw=true" alt="Barbería detalle 4">
                 </div>
             </div>
         </div>
@@ -372,7 +343,7 @@
                 <h2 class="text-5xl md:text-7xl font-black tracking-tighter text-black">Testimonios</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="card-bg p-12 rounded-[3.5rem] border gold-border shadow-sm space-y-8">
+                <div class="bg-white p-12 rounded-[3.5rem] border gold-border shadow-sm space-y-8">
                     <div class="flex gap-1">
                         <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
                         <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
@@ -389,7 +360,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-bg p-12 rounded-[3.5rem] border gold-border shadow-sm space-y-8">
+                <div class="bg-white p-12 rounded-[3.5rem] border gold-border shadow-sm space-y-8">
                     <div class="flex gap-1">
                         <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
                         <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
@@ -397,16 +368,16 @@
                         <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
                         <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
                     </div>
-                    <p class="text-2xl font-black tracking-tight leading-snug text-black">"El ambiente minimalista te permite desconectar de verdad. 10/10."</p>
+                    <p class="text-2xl font-black tracking-tight leading-snug text-black">"El ambiente chimba. 10/10."</p>
                     <div class="flex items-center gap-4 pt-4">
                         <div class="icon-gold w-12 h-12 rounded-xl flex items-center justify-center font-black">A</div>
                         <div>
                             <h4 class="font-black text-sm uppercase text-black">Andrés S.</h4>
-                            <p class="text-[8px] text-muted font-bold tracking-widest uppercase">Grooming Enthusiast</p>
+                            <p class="text-[8px] text-muted font-bold tracking-widest uppercase">Cliente Fiel</p>
                         </div>
                     </div>
                 </div>
-                <div class="card-bg p-12 rounded-[3.5rem] border gold-border shadow-sm space-y-8">
+                <div class="bg-white p-12 rounded-[3.5rem] border gold-border shadow-sm space-y-8">
                     <div class="flex gap-1">
                         <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
                         <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
@@ -414,12 +385,12 @@
                         <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
                         <i data-lucide="star" class="w-3 h-3 fill-current gold-accent"></i>
                     </div>
-                    <p class="text-2xl font-black tracking-tight leading-snug text-black">"Técnica premium y puntualidad suiza. El lugar perfecto."</p>
+                    <p class="text-2xl font-black tracking-tight leading-snug text-black">"Técnica premium y puntualidad. El lugar perfecto."</p>
                     <div class="flex items-center gap-4 pt-4">
                         <div class="icon-gold w-12 h-12 rounded-xl flex items-center justify-center font-black">J</div>
                         <div>
                             <h4 class="font-black text-sm uppercase text-black">Jorge R.</h4>
-                            <p class="text-[8px] text-muted font-bold tracking-widest uppercase">Business Executive</p>
+                            <p class="text-[8px] text-muted font-bold tracking-widest uppercase">Cliente Fiel</p>
                         </div>
                     </div>
                 </div>
@@ -433,19 +404,16 @@
             <div class="space-y-6">
                 <span class="gold-accent font-bold tracking-[0.5em] text-[9px] uppercase">Reserva</span>
                 <h2 class="text-6xl md:text-8xl font-black tracking-tighter text-black">Tu momento es hoy.</h2>
-                <p class="text-2xl text-muted max-w-xl mx-auto font-medium leading-relaxed">Agenda tu cita en segundos y recibe confirmación inmediata.</p>
+                <p class="text-2xl text-muted max-w-xl mx-auto font-medium leading-relaxed">Agenda tu cupo en segundos y recibe confirmación inmediata.</p>
             </div>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <a href="https://wa.me/yournumber" target="_blank" class="btn-black w-full sm:w-auto px-16 py-8 rounded-full flex items-center justify-center gap-5 text-sm font-black uppercase tracking-[0.1em]">
-                    WHATSAPP DIRECT <i data-lucide="message-circle" class="w-6 h-6"></i>
+                <a href="https:wa.me/+573106147688" target="_blank" class="btn-black w-full sm:w-auto px-16 py-8 rounded-full flex items-center justify-center gap-5 text-sm font-black uppercase tracking-[0.1em]">
+                    AGENDAR POR WHATSAPP <i data-lucide="message-circle" class="w-6 h-6"></i>
                 </a>
-                <button onclick="alert('Sistema de calendario disponible pronto.')" class="w-full sm:w-auto px-16 py-8 rounded-full flex items-center justify-center gap-5 border gold-border text-sm font-black uppercase tracking-[0.1em] hover:bg-gray-light transition-all text-black">
-                    ONLINE CALENDAR <i data-lucide="globe" class="w-6 h-6"></i>
-                </button>
             </div>
             <div class="flex items-center justify-center gap-3 gold-accent font-black text-[10px] uppercase tracking-[0.4em] animate-pulse pt-10">
                 <div class="w-2 h-2 rounded-full bg-current"></div>
-                Availability: High for today
+                Cortes = Calidad
             </div>
         </div>
     </section>
@@ -455,85 +423,69 @@
         <div class="max-w-7xl mx-auto space-y-24">
             <div class="flex flex-col lg:flex-row justify-between gap-20">
                 <div class="space-y-10">
-                    <div class="text-5xl font-black tracking-tighter gold-accent">ELYSIAN.</div>
+                    <div class="text-5xl font-black tracking-tighter gold-accent">MILLENIUM</div>
                     <div class="flex gap-4">
-                        <a href="#" class="icon-gold w-12 h-12 border gold-border rounded-2xl flex items-center justify-center transition-all">
+                        <a href="https://www.instagram.com/milleniumclub23/" target="_blank" class="icon-gold w-12 h-12 border gold-border rounded-2xl flex items-center justify-center transition-all">
                             <i data-lucide="instagram" class="w-5 h-5"></i>
                         </a>
-                        <a href="#" class="icon-gold w-12 h-12 border gold-border rounded-2xl flex items-center justify-center transition-all">
+                        <a href="https://tiktok.com/@tuusuario" target="_blank" class="icon-gold w-12 h-12 border gold-border rounded-2xl flex items-center justify-center transition-all">
                             <i data-lucide="video" class="w-5 h-5"></i>
                         </a>
-                        <a href="#" class="icon-gold w-12 h-12 border gold-border rounded-2xl flex items-center justify-center transition-all">
+                        <a href="https://facebook.com/tupagina" target="_blank" class="icon-gold w-12 h-12 border gold-border rounded-2xl flex items-center justify-center transition-all">
                             <i data-lucide="facebook" class="w-5 h-5"></i>
                         </a>
                     </div>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-16">
                     <div class="space-y-4">
-                        <h4 class="font-black text-sm uppercase tracking-widest text-black">Studio</h4>
-                        <p class="text-muted text-xs font-medium leading-loose">Calle Minimalista 01<br>Distrito Central, Ciudad<br>CP 12345</p>
+                        <h4 class="font-black text-sm uppercase tracking-widest text-black">Dirección</h4>
+                        <p class="text-muted text-xs font-medium leading-loose">Cartagena de Indias<br>(Campestre Mz 75A Lot 1 Etapa 8)</p>
                     </div>
                     <div class="space-y-4">
-                        <h4 class="font-black text-sm uppercase tracking-widest text-black">Opening</h4>
+                        <h4 class="font-black text-sm uppercase tracking-widest text-black">Horario</h4>
                         <p class="text-muted text-xs font-medium leading-loose">Lun - Sáb: 09:00 - 21:00<br>Dom: 10:00 - 18:00</p>
                     </div>
                 </div>
             </div>
             <div class="flex flex-col md:flex-row justify-between items-center gap-10 pt-16 border-t border-subtle">
-                <p class="text-[9px] text-muted font-black uppercase tracking-[0.3em]">&copy; 2024 Elysian Studio. Beyond Grooming.</p>
-                <div class="flex gap-8 text-[9px] font-black uppercase tracking-widest text-muted">
-                    <a href="#" class="hover:text-gold-primary transition-colors">Privacidad</a>
-                    <a href="#" class="hover:text-gold-primary transition-colors">Términos</a>
-                    <a href="#" class="hover:text-gold-primary transition-colors">Cookies</a>
-                </div>
+                <p class="text-[9px] text-muted font-black uppercase tracking-[0.3em]">&copy; 2024 Millenium Barber Club</p>
             </div>
         </div>
     </footer>
 
-    <!-- MOBILE CTA -->
-    <div class="md:hidden fixed bottom-10 left-6 right-6 z-40">
-        <button onclick="scrollToId('reservar')" class="btn-black w-full py-5 rounded-2xl shadow-2xl text-[10px] font-black uppercase tracking-[0.2em] active:scale-95 transition-transform">
-            Agendar Mi Turno
-        </button>
-    </div>
-
     <script>
-        // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Data - SERVICIOS ACTUALIZADOS
         const services = [
-            { id: '1', name: 'Corte Sencillo', desc: 'Corte clásico de precisión.', price: 18, time: '25 MIN', image: 'hhttps://www.citylit.ac.uk/media/amasty/blog/How_to_learn_French_9_tips_from_a_French_tutor.jpg' },
-            { id: '2', name: 'Corte y Cejas', desc: 'Corte + diseño de cejas.', price: 20, time: '30 MIN', image: 'https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=500&h=400&fit=crop' },
-            { id: '3', name: 'Corte y Línea', desc: 'Corte + perfilado de línea.', price: 20, time: '30 MIN', image: 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=500&h=400&fit=crop' },
-            { id: '4', name: 'Corte y Barba', desc: 'Combo completo de estilo.', price: 25, time: '45 MIN', image: 'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=500&h=400&fit=crop' },
-            { id: '5', name: 'Barba', desc: 'Perfilado y arreglo de barba.', price: 15, time: '20 MIN', image: 'https://images.unsplash.com/photo-1621607512214-68297480165e?w=500&h=400&fit=crop' },
-            { id: '6', name: 'Corte Millenium', desc: 'Nuestro servicio premium.', price: 30, time: '50 MIN', image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=500&h=400&fit=crop' }
+            { id: '1', name: 'Corte Sencillo', desc: 'Corte clásico de precisión.', price: 18, time: '25 MIN' },
+            { id: '2', name: 'Corte y Cejas', desc: 'Corte + diseño de cejas.', price: 20, time: '30 MIN' },
+            { id: '3', name: 'Corte y Línea', desc: 'Corte + perfilado de línea.', price: 20, time: '30 MIN' },
+            { id: '4', name: 'Corte y Barba', desc: 'Combo completo de estilo.', price: 25, time: '45 MIN' },
+            { id: '5', name: 'Barba', desc: 'Perfilado y arreglo de barba.', price: 15, time: '20 MIN' },
+            { id: '6', name: 'Corte Millenium', desc: 'Nuestro servicio premium.', price: 30, time: '50 MIN' }
         ];
 
-        // Data - PRODUCTOS
         const products = [
-            { id: '1', name: 'Cera Modeladora', price: 15, image: 'https://images.unsplash.com/photo-1621607512214-68297480165e?w=400&h=400&fit=crop' },
-            { id: '2', name: 'Pomada Fijación', price: 18, image: 'https://images.unsplash.com/photo-1623860661910-e8b28e3246e5?w=400&h=400&fit=crop' },
-            { id: '3', name: 'Aceite para Barba', price: 12, image: 'https://images.unsplash.com/photo-1631729371254-42c2559e6e79?w=400&h=400&fit=crop' },
-            { id: '4', name: 'Shampoo Premium', price: 20, image: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=400&h=400&fit=crop' },
-            { id: '5', name: 'Gel Fijador', price: 14, image: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&h=400&fit=crop' },
-            { id: '6', name: 'Bálsamo Barba', price: 16, image: 'https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=400&h=400&fit=crop' },
-            { id: '7', name: 'Cepillo de Barba', price: 10, image: 'https://images.unsplash.com/photo-1603569283847-aa295f0d016a?w=400&h=400&fit=crop' },
-            { id: '8', name: 'Spray Textura', price: 17, image: 'https://images.unsplash.com/photo-1585838533984-9e4d9f43b2e9?w=400&h=400&fit=crop' },
-            { id: '9', name: 'Aftershave Lotion', price: 19, image: 'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400&h=400&fit=crop' },
-            { id: '10', name: 'Kit Grooming', price: 45, image: 'https://images.unsplash.com/photo-1595348020949-87cdfbb44174?w=400&h=400&fit=crop' }
+            { id: '1', name: 'Cera Modeladora', price: 15, image: 'https://github.com/rosalesz/MilleniumBarber/blob/main/Imagenes/logo.png?raw=true' },
+            { id: '2', name: 'Pomada Fijación', price: 18, image: 'https://github.com/rosalesz/MilleniumBarber/blob/main/Imagenes/logo.png?raw=true' },
+            { id: '3', name: 'Aceite para Barba', price: 12, image: 'https://github.com/rosalesz/MilleniumBarber/blob/main/Imagenes/logo.png?raw=true' },
+            { id: '4', name: 'Shampoo Premium', price: 20, image: 'https://github.com/rosalesz/MilleniumBarber/blob/main/Imagenes/logo.png?raw=true' },
+            { id: '5', name: 'Gel Fijador', price: 14, image: 'https://github.com/rosalesz/MilleniumBarber/blob/main/Imagenes/logo.png?raw=true' },
+            { id: '6', name: 'Bálsamo Barba', price: 16, image: 'https://github.com/rosalesz/MilleniumBarber/blob/main/Imagenes/logo.png?raw=true' },
+            { id: '7', name: 'Cepillo de Barba', price: 10, image: 'https://github.com/rosalesz/MilleniumBarber/blob/main/Imagenes/logo.png?raw=true' },
+            { id: '8', name: 'Spray Textura', price: 17, image: 'https://github.com/rosalesz/MilleniumBarber/blob/main/Imagenes/logo.png?raw=true' },
+            { id: '9', name: 'Aftershave Lotion', price: 19, image: 'https://github.com/rosalesz/MilleniumBarber/blob/main/Imagenes/logo.png?raw=true' },
+            { id: '10', name: 'Kit Grooming', price: 45, image: 'https://github.com/rosalesz/MilleniumBarber/blob/main/Imagenes/logo.png?raw=true' }
         ];
 
-        // Render Services
         function renderServices() {
             const grid = document.getElementById('services-grid');
             services.forEach(s => {
                 grid.innerHTML += `
                     <div class="service-card bg-white rounded-[3rem] p-12 flex flex-col group">
                         <div class="flex justify-between items-start mb-12">
-                            <div class="icon-gold w-12 h-12 rounded-2xl flex items-center justify-center transition-colors">
-                                <i data-lucide="${s.icon}" class="w-6 h-6"></i>
+                            <div class="logo-container w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden">
+                                <img src="https://github.com/rosalesz/MilleniumBarber/blob/main/Imagenes/logo.png?raw=true" alt="Millenium Logo" class="w-full h-full object-cover">
                             </div>
                             <span class="text-3xl font-black gold-accent">${s.price}</span>
                         </div>
@@ -546,7 +498,6 @@
             lucide.createIcons();
         }
 
-        // Render Products
         function renderProducts() {
             const grid = document.getElementById('products-grid');
             products.forEach(p => {
@@ -569,7 +520,6 @@
             });
         }
 
-        // Smooth Scroll
         function scrollToId(id) {
             document.getElementById('mobile-menu').classList.add('hidden');
             const target = document.getElementById(id);
@@ -580,7 +530,6 @@
             }
         }
 
-        // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 30) {
@@ -594,14 +543,12 @@
             }
         });
 
-        // Mobile Menu
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         mobileBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Smooth Scroll for Hash Links
         document.querySelectorAll('a[href^="#"]').forEach(link => {
             link.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
@@ -612,7 +559,6 @@
             });
         });
 
-        // Initialize
         renderServices();
         renderProducts();
     </script>
